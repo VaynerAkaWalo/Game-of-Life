@@ -45,7 +45,7 @@ class Board:
 
     # Funkcja, która wypełnia planszę tak, aby na planszy była wskazana ilości
     # żywych komórek.
-    def fillBoard(self, lifecells):
+    def fillboard(self, lifecells):
         if lifecells < 0:
             raise ValueError("Ilość komórek nie może byc ujemna")
         if lifecells > self.col * self.rows:
@@ -171,7 +171,7 @@ class GameOfLife:
 
 if __name__ == '__main__':
     board = Board(35, 25)
-    board.fillBoard(500)
+    board.fillboard(500)
     game = GameOfLife(board)
     for i in range(100):
         game.step()
