@@ -23,9 +23,9 @@ class Board:
         # Złączenie całej tablicy w jeden string.
         # Żywe komórki wyświetlane są jako zielone, martwe jako białe.
         # Tło ustawione jest na czarne
-        return "\n".join(" ".join("\033[1;37;40m "
+        return "\n".join(" ".join("\033[1;37;37m " #37
                                   + self.deadcharacter
-                                  if x == '0' else "\033[1;32;40m "
+                                  if x == '0' else "\033[1;32;32m " #32
                                                    + self.alivecharacter
                                   for x in y) for y in self.board)
 
@@ -80,6 +80,15 @@ class Board:
                              "od jeden")
 
         return x + height < self.col and y + width < self.rows
+
+    # Funkcja pozwala na ustawienie komórki o podanych koordynatach jako żywą
+    def setasalive(self, x, y):
+        if x < 0 or x >= self.col:
+            raise ValueError("Pozycja X nie należy do tablicy")
+        if y < 0 or y >= self.rows:
+            raise ValueError("Pozycja Y nie należy do tablicy")
+
+        self.board[y][x] = "X"
 
 
 # Klasa implementująca silnik Game of Life
