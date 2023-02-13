@@ -23,9 +23,9 @@ class Board:
         # Złączenie całej tablicy w jeden string.
         # Żywe komórki wyświetlane są jako zielone, martwe jako białe.
         # Tło ustawione jest na czarne
-        return "\n".join(" ".join("\033[1;37;37m " #37
+        return "\n".join(" ".join("\033[1;37;37m "
                                   + self.deadcharacter
-                                  if x == '0' else "\033[1;32;32m " #32
+                                  if x == '0' else "\033[1;32;32m "
                                                    + self.alivecharacter
                                   for x in y) for y in self.board)
 
