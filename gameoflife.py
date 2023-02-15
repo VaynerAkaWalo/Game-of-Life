@@ -79,7 +79,7 @@ class Board:
             raise ValueError("Wysokośc i szerokośc nie może być mniejsza "
                              "od jeden")
 
-        return x + height < self.col and y + width < self.rows
+        return x + height - 1 < self.col and y + width - 1 < self.rows
 
     # Funkcja pozwala na ustawienie komórki o podanych koordynatach jako żywą
     def setasalive(self, x, y):
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     board = Board(35, 25)
     board.fillboard(500)
     game = GameOfLife(board)
-    for i in range(100):
+    for _ in range(100):
         game.step()
         os.system('cls||clear')
         print(game)
