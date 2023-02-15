@@ -45,10 +45,10 @@ class Board:
 
     # Funkcja, która wypełnia planszę tak, aby na planszy była wskazana ilości
     # żywych komórek.
-    def fillboard(self, lifecells):
-        if lifecells < 0:
+    def fillboard(self, alivecells):
+        if alivecells < 0:
             raise ValueError("Ilość komórek nie może byc ujemna")
-        if lifecells > self.col * self.rows:
+        if alivecells > self.col * self.rows:
             raise ValueError("Tyle komórek nie zmieści się na planszy")
 
         # Sprawdzamy ile jest aktualnie żywych komórek
@@ -58,16 +58,16 @@ class Board:
                 if self.board[y][x] == 'X':
                     counter += 1
 
-        lifecells -= counter
+        alivecells -= counter
 
         # Ożywiamy komórki na losowych koordynatach tak długo aż będzie wskazana
         # liczba żywych komórek
-        while lifecells > 0:
+        while alivecells > 0:
             x = random.randint(0, self.col - 1)
             y = random.randint(0, self.rows - 1)
             if self.board[y][x] == '0':
                 self.board[y][x] = 'X'
-                lifecells -= 1
+                alivecells -= 1
 
     # Funkcja, która sprawdza, czy na tablicy zmieści się obiekt,
     # którego lewy góry róg leży w koordynatach x, y
